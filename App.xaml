@@ -1,0 +1,29 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TestMaui"
+             xmlns:converter="clr-namespace:TestMaui.Converters"
+             x:Class="TestMaui.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            
+            <converter:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+            
+            <Color x:Key="PrimaryColor">#0cd3d0</Color>
+            <Color x:Key="SecondaryColor">#e7fbfa</Color>
+            
+            <Style x:Key="FrameStyle" TargetType="Frame">
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Padding" Value="10,5" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="IsClippedToBounds" Value="True" />
+                <Setter Property="BorderColor" Value="{StaticResource PrimaryColor}" />
+            </Style>
+            
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestMaui.Views.AddEmployeePage"
+             Title="Add Employee">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" RowSpacing="10" Padding="10">
+            <Frame Grid.Row="0" Style="{StaticResource FrameStyle}">
+                <Entry Placeholder="Enter Name" Text="{Binding Employee.Name}" />
+            </Frame>
+            <Frame Grid.Row="1" Style="{StaticResource FrameStyle}">
+                <Grid ColumnDefinitions="Auto,Auto">
+                    <RadioButton Grid.Column="0" Content="Permanent" IsChecked="{Binding Employee.IsPermanent, Mode=TwoWay}" />
+                    <RadioButton Grid.Column="1" Content="Contractual" IsChecked="{Binding Employee.IsPermanent, Converter={StaticResource InverseBooleanConverter}, Mode=TwoWay}" />
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="2" Style="{StaticResource FrameStyle}">
+                <Entry Placeholder="Enter Salary" Text="{Binding Employee.Salary,StringFormat='{0:F2}'}" Keyboard="Numeric" MaxLength="10" TextChanged="Entry_TextChanged"/>
+            </Frame>
+            <Frame Grid.Row="3" Style="{StaticResource FrameStyle}">
+                <Picker ItemsSource="{Binding Departments}" SelectedItem="{Binding SelectedDepartment}" ItemDisplayBinding="{Binding .}" Title="Select Department"/>
+            </Frame>
+            <Grid Grid.Row="4" ColumnDefinitions="Auto,Auto" HorizontalOptions="Center" ColumnSpacing="10">
+                <Button Grid.Column="0" Text="Cancel" Command="{Binding CancelCommand}" BackgroundColor="{StaticResource SecondaryColor}"
+                        HorizontalOptions="Center" VerticalOptions="Center" Padding="20,0" TextColor="Black" BorderColor="Black"/>
+                <Button Grid.Column="1" Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="Center" VerticalOptions="Center" Padding="20,0"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
