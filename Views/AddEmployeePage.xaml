@@ -15,7 +15,7 @@
                 </Grid>
             </Frame>
             <Frame Grid.Row="2" Style="{StaticResource FrameStyle}">
-                <Entry Placeholder="Enter Salary" Text="{Binding Employee.Salary,StringFormat='{0:F2}'}" Keyboard="Numeric" MaxLength="10" TextChanged="Entry_TextChanged"/>
+                <Entry Placeholder="Enter Salary" Text="{Binding Employee.Salary,StringFormat='{0:F2}'}" Keyboard="Numeric" MaxLength="10" Unfocused="Entry_Unfocused"/>
             </Frame>
             <Frame Grid.Row="3" Style="{StaticResource FrameStyle}">
                 <Picker ItemsSource="{Binding Departments}" SelectedItem="{Binding SelectedDepartment}" ItemDisplayBinding="{Binding .}" Title="Select Department"/>

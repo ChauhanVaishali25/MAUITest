@@ -10,13 +10,14 @@
             <Grid Grid.Row="1" RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*,Auto" RowSpacing="0" Padding="0,20,0,0">
                 <Label Grid.Row="1" Grid.Column="0" FontSize="Micro" Text="{Binding MinimumValue}" />
                 <Label Grid.Row="1" Grid.Column="2" FontSize="Micro" Text="{Binding MaximumValue}" />
-                <Slider Grid.Row="0" Grid.ColumnSpan="3" Minimum="{Binding MinimumValue}" Maximum="{Binding MaximumValue}" HorizontalOptions="FillAndExpand" />
+                <Slider Grid.Row="0" Grid.ColumnSpan="3" Minimum="{Binding MinimumValue}" Value="{Binding RangeValue}" 
+                        Maximum="{Binding MaximumValue}" HorizontalOptions="FillAndExpand" ValueChanged="Slider_ValueChanged" />
             </Grid>
             <CollectionView Grid.Row="2" ItemsSource="{Binding Employees}" EmptyView="No record found" Margin="0,20">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame Margin="0,5" Style="{StaticResource FrameStyle}" Padding="0">
-                            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto,Auto">
+                        <Frame Margin="0,5" Style="{StaticResource FrameStyle}" Padding="0" IsClippedToBounds="True">
+                            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto,Auto" RowSpacing="0">
                                 <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="Medium" Padding="10,3">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -36,7 +37,7 @@
                                     </Label.Triggers>
                                 </Label>
                                 <Label Grid.Row="1" Grid.Column="1" Text="{Binding Salary,StringFormat='Salary: {0:F2}'}" FontSize="Small" Padding="10,3"/>
-                                <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Margin="0" Padding="10,0" VerticalOptions="FillAndExpand" HorizontalOptions="Center" BackgroundColor="Red">
+                                <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Margin="0,0,0,-1" Padding="10,0" RowSpacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand" BackgroundColor="Red" IsClippedToBounds="True">
                                     <Label Text="Delete" FontSize="Small" TextColor="White" FontAttributes="Bold" VerticalOptions="Center"/>
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding Source={x:Reference this}, Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}" />

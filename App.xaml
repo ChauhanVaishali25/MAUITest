@@ -12,9 +12,9 @@
             </ResourceDictionary.MergedDictionaries>
             
             <converter:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
-            
-            <Color x:Key="PrimaryColor">#0cd3d0</Color>
-            <Color x:Key="SecondaryColor">#e7fbfa</Color>
+
+            <Color x:Key="PrimaryColor">#512BD4</Color>
+            <Color x:Key="SecondaryColor">#a593e6</Color>
             
             <Style x:Key="FrameStyle" TargetType="Frame">
                 <Setter Property="HasShadow" Value="False" />

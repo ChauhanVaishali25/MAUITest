@@ -9,14 +9,13 @@ public partial class AddEmployeePage : ContentPage
         InitializeComponent();
         this.BindingContext = new AddEmployeeViewModel();
     }
-
-    private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+    private void Entry_Unfocused(object sender, FocusEventArgs e)
     {
         try
         {
-            if (!string.IsNullOrEmpty(e.NewTextValue))
+            if (((Entry)sender) != null)
             {
-                if (decimal.TryParse(e.NewTextValue, out decimal salary) && salary > 0)
+                if (decimal.TryParse(((Entry)sender).Text, out decimal salary) && salary > 0)
                 {
                     ((Entry)sender).Text = salary.ToString("F2");
                 }

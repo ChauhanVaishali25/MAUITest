@@ -8,6 +8,12 @@ namespace TestMaui.ViewModels
     public class EmployeeViewModel : BaseViewModel
     {
         #region Properties
+        private ObservableCollection<EmpModel> allEmployees;
+        public ObservableCollection<EmpModel> AllEmployees
+        {
+            set { SetProperty(ref allEmployees, value); }
+            get { return allEmployees; }
+        }
         private ObservableCollection<EmpModel> employees;
         public ObservableCollection<EmpModel> Employees
         {
@@ -25,6 +31,12 @@ namespace TestMaui.ViewModels
         {
             set { SetProperty(ref maximumValue, value); }
             get { return maximumValue; }
+        }
+        private double rangeValue;
+        public double RangeValue
+        {
+            set { SetProperty(ref rangeValue, value); }
+            get { return rangeValue; }
         }
         #endregion
 
@@ -53,6 +65,7 @@ namespace TestMaui.ViewModels
                 if (emp != null && emp.Count > 0)
                 {
                     Employees = new ObservableCollection<EmpModel>(emp);
+                    AllEmployees = Employees;
 
                     MinimumValue = Employees.Min(x => x.Salary);
                     MaximumValue = Employees.Max(x => x.Salary);
@@ -98,6 +111,18 @@ namespace TestMaui.ViewModels
                         BindEmployees();
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                SendErrorLogs(ex);
+            }
+        }
+        public void FilterEmployees()
+        {
+            try
+            {
+                var data = AllEmployees.Where(x => x.Salary >= RangeValue && x.Salary <= MaximumValue).ToList();
+                Employees = new ObservableCollection<EmpModel>(data);
             }
             catch (Exception ex)
             {

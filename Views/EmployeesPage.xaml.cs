@@ -15,4 +15,9 @@ public partial class EmployeesPage : ContentPage
         base.OnAppearing();
         (this.BindingContext as EmployeeViewModel).BindEmployees();
     }
+
+    private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
+    {
+        (this.BindingContext as EmployeeViewModel).FilterEmployees();
+    }
 }
